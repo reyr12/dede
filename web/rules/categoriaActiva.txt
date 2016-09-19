@@ -1,0 +1,12 @@
+/etc/nsm/rules/dns-events.rules
+/etc/nsm/rules/drop.rules
+/etc/nsm/rules/emerging-attack_response.rules
+/etc/nsm/rules/emerging-dos.rules
+/etc/nsm/rules/emerging-exploit.rules
+/etc/nsm/rules/emerging-inappropriate.rules
+/etc/nsm/rules/emerging-p2p.rules
+/etc/nsm/rules/emerging-sql.rules
+/etc/nsm/rules/emerging-trojan.rules
+/etc/nsm/rules/emerging-malware.rules
+/etc/nsm/rules/rmkips.rules
+/etc/nsm/rules/local.rules

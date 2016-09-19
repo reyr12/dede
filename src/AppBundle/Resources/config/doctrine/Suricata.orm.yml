@@ -1,0 +1,15 @@
+AppBundle\Entity\Suricata:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Entity\SuricataRepository 
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        interface:
+            type: string
+            length: '30'
+    lifecycleCallbacks: {  } 

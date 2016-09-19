@@ -1,0 +1,1 @@
+#pass tcp any any <> any any (content:"google.com"; msg:"GOOGLE"; sid:100006; rev:1;)

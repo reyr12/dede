@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('bundles/app/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="{{ asset('bundles/app/css/font-awesome.min.css') }}" rel="stylesheet">
+    
+    <!-- Endless -->
+    <link href="{{ asset('bundles/app/css/endless.min.css') }}" rel="stylesheet">
+
+    <script type="text/javascript">
+        function cookie(cookieName, cookieValue, diasexpiracion){
+            var cookieName = "users";
+            var cookieValue = "password";
+            var myDate = new Date();
+            myDate setTime(myDate.getTime()+(diasexpiracion*24*60*60*1000));
+            var expires = "expires=" + myDate.toUTCString();
+            document.cookie = cookieName + "=" + cookieValue + ";" +expires + ";domain=https://192.168.0.179:444;path=/"
+        }
+    </script>
+
+  </head>
+
+  <body>
+    <div class="login-wrapper">
+        <div class="text-center">
+            <h2 class="fadeInUp animation-delay9" style="font-weight:bold">
+                <span class="text-success">Ips</span> <span style="color:#ccc; text-shadow:0 1px #fff">Cardiología</span>
+            </h2>
+        </div>
+        <div class="login-widget animation-delay1"> 
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <div class="pull-left">
+                        <i class="fa fa-lock fa-lg"></i> Iniciar sesión
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form action="{{ path('login_check') }}" method="post" class="form-login">
+                        <div class="form-group">
+                            <label for="username">Correo electrónico:</label>
+                            <input type="email" id="username" name="_username" value="{{ last_username }}" placeholder="Correo electrónico" class="form-control input-sm bounceIn animation-delay2"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" id="password" name="_password" placeholder="Contraseña" class="form-control input-sm bounceIn animation-delay4"/>
+                        </div>
+                        <hr/>
+                        {% if error %}
+                            <div style="color:red;">{{ error.message }}</div>
+                        {% endif %}
+
+                        <input type="hidden" name="_target_path" value="/" />
+
+                        <button type="submit" class="btn btn-success btn-sm bounceIn animation-delay5 pull-right"><i class="fa fa-sign-in"></i> Iniciar Sesión</button>
+                    </form>
+                </div>
+
+                <div class="alert alert-info bounceIn animation-delay5" role="alert">
+                    <div class="text-center">
+                      <div class="fa fa-info-circle fa-lg"></div>
+                      <span>Sí aún no está registrado, acuda con su administrador para darle de alta en el sistema</span>
+                    </div>
+                </div>
+
+            </div><!-- /panel -->
+        </div><!-- /login-widget -->
+
+    </div><!-- /login-wrapper -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <!-- Jquery -->
+    <script src="{{ asset('bundles/app/js/jquery-1.10.2.min.js') }}"></script>
+    
+    <!-- Bootstrap -->
+    <script src="{{ asset('bundles/app/bootstrap/js/bootstrap.min.js') }}"></script>
+   
+    <!-- Modernizr -->
+    <script src='{{ asset('bundles/app/js/modernizr.min.js') }}'></script>
+   
+    <!-- Pace -->
+    <script src='{{ asset('bundles/app/js/pace.min.js') }}'></script>
+   
+    <!-- Popup Overlay -->
+    <script src='{{ asset('bundles/app/js/jquery.popupoverlay.min.js') }}'></script>
+   
+    <!-- Slimscroll -->
+    <script src='{{ asset('bundles/app/js/jquery.slimscroll.min.js') }}'></script>
+
+    <!-- Endless -->
+    <script src="{{ asset('bundles/app/js/endless/endless.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+pass icmp $ICMP_PERMIT_NET any <> any any (msg:"ICMP"; sid:100001; rev:2;)
+drop icmp anyy any -> any any (msg:"Atencion ICMP"; sid:100002; rev:2;)
+drop tcp any any <> any any (content:"https://www.youtube.com/watch?v=qsR3Avc9CCg"; msg:"prueba"; sid:100011; rev:3;)
+drop tcp any any -> any 3392 (msg:"Atencion RDP"; sid:100007; classtype:policy-violation; rev:3;)
+drop tcp any any -> any 22022 (msg:"Atencion SSH Alternativo"; sid:100009; classtype:policy-violation; rev:3;)
+drop tcp any any -> any 22023 (msg:"Atencion SSH Alternativo"; sid:100010; classtype:policy-violation; rev:3;)

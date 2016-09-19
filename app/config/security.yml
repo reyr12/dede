@@ -1,0 +1,85 @@
+security:
+    encoders:
+        AppBundle\Entity\Usuario:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+        Symfony\Component\Security\Core\User\User: plaintext
+#    encoders:
+#        Sisaf\SisafBundle\Entity\usuario:
+#            algorithm: sha512
+#            encode-as-base64: true
+#            iterations: 10
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+#        ROLE_COLONO:       ROLE_USER
+#        ROLE_TESORERO:       ROLE_USER
+#        ROLE_MESADIRECTIVA:       ROLE_USER
+#        ROLE_DEVELOPER: [ROLE_USER, ROLE_ADMIN, ROLE_COLONO, ROLE_TESORERO, ROLE_MESADIRECTIVA]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, Usuario]
+        in_memory:
+            memory:
+                users:
+                    admin@admin.com: 
+                        password: dev 
+                        roles: 'ROLE_ADMIN'                    
+        Usuario:
+            entity:
+                class: AppBundle:Usuario
+                property: username
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/login$
+            security: false
+
+        login_firewall:
+            pattern:    ^/login$
+            anonymous:  ~
+
+        secured_area:
+            pattern:    ^/
+            anonymous:  ~
+            form_login:
+                login_path:  login
+                check_path:  login_check
+#                remember_me: true
+            logout:
+                path:   /logout
+                target: /
+            remember_me:
+                key: holysoymuyseguro
+                lifetime: 1800
+#                path: /.*
+#                domain: ~
+        main:
+            pattern: /.*
+            provider: Usuario
+            security: true
+            anonymous: true
+
+    access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/Inicio, roles: ROLE_USER } #todos tienen acceso por ser ROLE_USER
+    - { path: ^/*, roles: [ROLE_ADMIN,ROLE_USER] }
+#    - { path: ^/colono, roles: ROLE_COLONO }
+#    - { path: ^/tesorero, roles: ROLE_TESORERO }
+#    - { path: ^/mesadirectiva, roles: ROLE_MESADIRECTIVA }
+
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #
+        # You must uncomment the two following rules to restrict access to paths
+        # starting with the /_internal prefix to only localhost
+        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        #- { path: ^/_internal/secure, roles: ROLE_NO_ACCESS }

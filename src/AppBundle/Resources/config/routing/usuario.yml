@@ -1,0 +1,30 @@
+usuario:
+    pattern:  /
+    defaults: { _controller: "AppBundle:Usuario:index" }
+
+usuario_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AppBundle:Usuario:show" }
+
+usuario_new:
+    pattern:  /new
+    defaults: { _controller: "AppBundle:Usuario:new" }
+
+usuario_create:
+    pattern:  /create
+    defaults: { _controller: "AppBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AppBundle:Usuario:edit" }
+
+usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AppBundle:Usuario:update" }
+    requirements: { _method: post }
+
+usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppBundle:Usuario:delete" }
+    requirements: { _method: post }

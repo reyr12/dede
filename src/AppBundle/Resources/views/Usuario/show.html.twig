@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block title %}.::Panel Cardiologia::.!{% endblock %}
+{% block contenido -%}
+
+<div class="panel panel-default">
+
+    <div class="panel-heading"><h1>Usuario #{{ entity.id }}</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Nombre:</b> {{ entity.username }}</p>
+        <p><b>Contraseña:</b> {{ entity.password }}</p>
+        <p><b>Correo:</b> {{ entity.email }}</p>
+        <p><b>Teléfono:</b> {{ entity.telefono }}</p>
+        <p><b>Permisos:</b> {{ entity.roles|join }}</p>
+
+        <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            <a class="btn btn-success" href="{{ path('usuario_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

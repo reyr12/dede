@@ -1,0 +1,8 @@
+AppBundle_usuario:
+        resource: "@AppBundle/Resources/config/routing/usuario.yml"
+        prefix:   /usuarios
+
+AppBundle_role:
+        resource: "@AppBundle/Resources/config/routing/role.yml"
+        prefix:   /role
+

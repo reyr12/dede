@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+{% block title %}.::Panel Cardiologia::.!{% endblock %}
+{% block contenido -%}
+
+<h1>role creation</h1>
+
+<form action="{{ path('role_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('role') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

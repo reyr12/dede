@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+{% block title %}.::Panel Cardiologia::.!{% endblock %}
+{% block contenido -%}
+
+<h1>Registrar usuario</h1>
+
+<form action="{{ path('usuario_create') }}" method="post" {{ form_enctype(form) }}>
+    <div class="form-group">
+        <label>Nombre</label>
+        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Nombre y Apellido'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.username) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Contraseña</label>
+        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Algo que no olvide..'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.password) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Correo</label>
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'correo@personal.com'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.email) }}</span>
+    </div>   
+   
+    <div class="form-group">
+        <label>Teléfono</label>
+        {{ form_widget(form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Teléfono celular'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.telefono) }}</span>
+    </div>
+    {#<div class="form-group">
+        <label>Permisos</label>
+        {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.roles) }}</span>
+    </div>#}
+
+
+    {{ form_widget(form._token) }}
+    <p>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+    </p>
+</form>
+
+{% endblock %}
