@@ -34,19 +34,68 @@ W
 </div>
 </li>
 <li class="active">
-<a href="{{ path('homepage') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+<a href="{{ path('homepage') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Tablero de reportes</span> </a>
 </li>
 <li >
-<a href="{{ path('maclist') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Mac list</span> <span class="fa arrow"></span></a>
+<a href="{{ path('maclist') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Mac list</span> </span></a>
 </li>
 <li >
-<a href="{{ path('suricata-homepage') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Suricata</span> <span class="fa arrow"></span></a>
+<a href="{{ path('suricata-homepage') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Reglas IPS</span> </span></a>
 </li>
 <li >
-<a href="{{ path('usuario') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Usuarios</span> <span class="fa arrow"></span></a>
+<a href="{{ path('usuario') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Usuarios</span> </a>
 </li>
 <li>
-<a href="https://192.168.0.179:444/"><i class="fa fa-th-large"></i><span class="nav-label">Snorby</span> <span class="fa arrow"></span></a>
+<a><i class="fa fa-th-large"></i><span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
+<ul class="nav" id="side-menu">
+<li class="active1">
+<a><i class="fa fa-th-large"></i><span class="nav-label">Administration</span> <span class="fa arrow"></span></a>
+<ul class="nav" id="side-menu">
+<li>
+<a href="https://192.168.0.153:444/settings"><span class="">General settings</span></a>   
+</li> 
+<li>
+<a href="https://192.168.0.153:444/classifications"><span class="nav-label">Classifications</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/sensors"><span class="nav-label">Sensors</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/lookups"><span class="nav-label">Lookup Sources</span></a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/asset_names"><span class="nav-label">Asset Name Manager</span> </span></a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/severities"><span class="nav-label">Severities</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/signatures"><span class="nav-label">Signatures</span> </span></a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/users"><span class="nav-label">Users</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/jobs"><span class="nav-label">Worker & Job Queue</span> </a>   
+</li>
+</ul>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/dashboard"><i><img src="{{ asset('bundles/app/images/dashboard.png')}}" /></i><span class="nav-label">Dashboard</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/events/queue"><i><img src="{{ asset('bundles/app/images/queue.png')}}" /></i><span class="nav-label">My Queue</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/events/sessions"><i><img src="{{ asset('bundles/app/images/evt.png')}}" /></i><span class="nav-label">Events</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/sensors"><i><img src="{{ asset('bundles/app/images/sensors.png')}}" /></i><span class="nav-label">Sensors</span> </a>   
+</li>
+<li>
+<a href="https://192.168.0.153:444/search"><i><img src="{{ asset('bundles/app/images/search.png')}}" /></i><span class="nav-label">Search</span> </a>   
+</li>
+</ul>
 </li>
 </ul>
 </div>
@@ -61,10 +110,11 @@ W
 {% block mensajes %}
 <ul class="nav navbar-top-links navbar-right">
 <li>
-<span class="m-r-sm text-muted welcome-message">Bienvenido  {{ app.security.getToken().getUser().getUsername() }}
-<!--{% if app.user %}
+<span class="m-r-sm text-muted welcome-message">Bienvenido  
+<!--{{ app.security.getToken().getUser().getUsername() }} -->
+{% if app.user %}
 {{ app.user.username }} 
-{% endif %} --></span>
+{% endif %}</span>
 </li>
 <li>
 <a href="{{ path('logout') }}">
@@ -221,10 +271,65 @@ function crearCookie(clave, valor, diasexpiracion) {
 }
 </script>
 
+<script type="text/javascript">
+<!--
+/*
+ * Función para validar una dirección ip
+ * el identificador del formulario
+ */
+function validateIp(idForm)
+{
+    //Creamos un objeto 
+    object=document.getElementById(idForm);
+    valueForm=object.value;
+ 
+    // Patron para la ip
+    var patronIp=new RegExp("^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$");
+    //window.alert(valueForm.search(patronIp));
+    // Si la ip consta de 4 pares de números de máximo 3 dígitos
+    if(valueForm.search(patronIp)==0)
+    {
+        // Validamos si los números no son superiores al valor 255
+        valores=valueForm.split(".");
+        if(valores[0]<=255 && valores[1]<=255 && valores[2]<=255 && valores[3]<=255)
+        {
+            //Ip correcta
+            object.style.color="#000";
+            return;
+        }
+    }
+    //Ip incorrecta
+    object.style.color="#f00";
+}
+//copiar codigo
+function validateMAC(idForm)
+{
+    //Creamos un objeto 
+    object=document.getElementById(idForm);
+    valueForm=object.value;
+ 
+    // Patron para la MAC
+    var patronMAC = /^([0-9A-F]{2}[:]){5}([0-9A-F]{2})$/;
+    //window.alert(valueForm.search(patronIp));
+    // Si la mac consta de 4 pares de números de máximo 3 dígitos
+    if(valueForm.search(patronMAC)==0)
+    {
+        // Validamos si los números no son superiores al valor 255
+        valores=valueForm;
+        if(patronMAC.test(valores) === true){
+//Ip correcta
+            object.style.color="#000";
+            return;
+        }
 
+    }
+    //Ip incorrecta
+    object.style.color="#f00";
+}
+//-->
+</script> //copiar codigo
 
-
- <script language="JavaScript"> var nav4 = window.Event ? true : false; function acceptNum(evt){ var key = nav4 ? evt.which : evt.keyCode; return (key <= 13 || (key >= 48 && key <= 57) || key==46);}</script>
+ <!--<script language="JavaScript"> var nav4 = window.Event ? true : false; function acceptNum(evt){ var key = nav4 ? evt.which : evt.keyCode; return (key <= 13 || (key >= 48 && key <= 57) || key==46);}</script>-->
 
 {% block js %}{% endblock %}
 <script>
