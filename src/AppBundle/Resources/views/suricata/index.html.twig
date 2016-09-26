@@ -243,7 +243,16 @@ box-shadow: inset 0px 0px 0px #16987e, 0px 5px 0px 0px #16987e, 0px 10px 5px #99
                          <a href="javascrip:void(0)" h="dfg" class="btn form_transaccion_enable asinna" entidad="{{entity.ruleencode}}" title="Activar Entrada"><i class="fa fa-check-square-o"></i>
                          </a>
                     {% endif %} 
-               
+                    <input type="hidden" name="txtElid" value="{{entity.id}}">
+                    {% if sinnada == 'local.rules' %}
+                    <form method="POST" action="{{path('rule_delete')}}">
+                        <input type="hidden" name="file" value="{{sinnada}}">
+                        <input type="hidden" name="rule" value="{{entity.ruleencode}}">
+                          <button type="submit"  class="btn btnsin" title="Eliminar Entrada"><i class="fa fa-eraser"></i>
+                         </button>
+                    </form>
+                        
+                    {% endif %}
                 </td>
             </tr>
              {% endif %} 

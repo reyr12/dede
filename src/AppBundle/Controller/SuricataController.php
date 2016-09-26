@@ -261,6 +261,20 @@ class SuricataController extends Controller
            'rulea'=>trim($rule), 
         ));
     }
+    /**
+     * @Route("/ruleDelete", name="rule_delete")
+     */
+    public function ruleDeleteAction()
+    {
+        $rule=$this->get('request')->request->get('rule', '');
+        $file=$this->get('request')->request->get('file', '');  
+ //echo base64_decode($rule);
+        return $this->render('AppBundle:suricata:delete.html.twig', array(
+           'file'=>$file,
+           'rule'=>trim( base64_decode(urldecode($rule))), 
+           'rulea'=>trim($rule), 
+        ));
+    }
 
      /**
      * @Route("/ruleUpdate", name="rule_update")
