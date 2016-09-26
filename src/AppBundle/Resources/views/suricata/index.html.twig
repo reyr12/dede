@@ -75,7 +75,7 @@ box-shadow: inset 0px 0px 0px #16987e, 0px 5px 0px 0px #16987e, 0px 10px 5px #99
                                     <select name="archivo[]" data-placeholder="Selecciona una categoría..." class="chosen-select col-sm-4" multiple>
                                     {% for entity in archivoso %}
                                        {% if entity.value !='/etc/nsm/rules/rmkips.rules' or entity.value !='/etc/nsm/rules/local.rules'  %}
-                                            <option value="{{entity.value}}" {% if entity.activo > 0 %} selected="selected" {% endif %} >
+                                            <option value="{{entity.value}}" {% if entity.activo > 0 %}  {% endif %} >
                                             {{entity.value|replace({'/etc/nsm/rules/': ''})}}</option>
                                        {% endif %}
                                     {% endfor %}
