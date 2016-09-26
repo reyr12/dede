@@ -1,0 +1,16 @@
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
+alert tcp any any -> any any (content:"wikiupload.com"; msg:"Descargas de Wikiupload"; classtype:policy-violation; sid:100000023; rev:2;)
+
+alert udp $HOME_NET 17500 -> any 17500 (msg:"ET POLICY Dropbox Client Broadcasting"; content:"{|22|host_int|22 3a| "; depth:13; content:" |22|version|22 3a| ["; distance:0; content:"], |22|displayname|22 3a| |22|"; distance:0; threshold:type limit, count 1, seconds 3600, track by_src; classtype:policy-violation; sid:2012648; rev:3;)
+
