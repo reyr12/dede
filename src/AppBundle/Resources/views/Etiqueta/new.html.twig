@@ -42,7 +42,7 @@
 <div class="form-group">
 <label class="col-sm-2 control-label">DISPOSITION</label>
 <div class="col-sm-10">
-<input type="text" name="txtAction">
+<input type="text" name="txtAction" placeholder="DISPOSITION">
 <span class="help-block m-b-none"></span>
 </div>
 </div>
@@ -50,7 +50,7 @@
 <div class="form-group">
 <label class="col-sm-2 control-label">INTERFACE</label>
 <div class="col-sm-10">
-<input type="text" name="txtInterface">
+<input type="text" name="txtInterface" placeholder="INTERFACE">
 <span class="help-block m-b-none"></span>
 </div>
 </div>
@@ -58,14 +58,15 @@
 <div class="form-group">
 <label class="col-sm-2 control-label">MAC</label>
 <div class="col-sm-10">
-<input type="text" name="txtMac" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" maxlength="17" >
+<input type='text' id='id__mac' name='txtMac'  class='' value="" size='20' maxlength='17' title='Address' placeholder="MAC" onKeyUp="javascript:validateMAC('id__mac')"  />
+<!--<input type="text" name="txtMac" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" maxlength="17" >-->
 <span class="help-block m-b-none"></span>
 </div>
 </div>
 <div class="form-group">
 <label class="col-sm-2 control-label">IP ADDRESSES </label>
 <div class="col-sm-10">
-<input type="text" name="txtIp" maxlength="15" onKeyPress="return acceptNum(event)">
+<input type='text' id='id_ip' name='ip'  class='' value="" size='20' maxlength='15' title='Address' placeholder="IP" onKeyUp="javascript:validateIp('id_ip')" />
 <span class="help-block m-b-none"></span>
 </div>
 </div>
