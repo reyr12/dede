@@ -232,7 +232,7 @@ box-shadow: inset 0px 0px 0px #16987e, 0px 5px 0px 0px #16987e, 0px 10px 5px #99
                          </a>
                      {% endif %}
                      {% if entity.iconb == 'activo' %}
-                        <a href="javascrip:void(0)" class="btn form_rule_disable asinna" entidad="{{entity.ruleencode}}" title="Agregar"><i class="fa fa-plus-square-o"></i>
+                        <a href="{{path('rule_add')}}" class="btn asinna" entidad="{{entity.ruleencode}}" title="Agregar"><i class="fa fa-plus-square-o"></i>
                          </a>
                      {% endif %}
                      {% if entity.iconb == 'pendiente' %}
