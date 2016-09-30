@@ -253,43 +253,20 @@ W
 <!-- Sparkline demo data -->
 <script src="{{ asset('bundles/app/js/demo/sparkline-demo.js')}}"></script>
 
-<!-- Validate ipv4 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="{{ asset('bundles/app/js/jquery.input-ip-address-control-1.0.min.js')}}"></script>
 <script type="text/javascript">
-$(function(){
-$('#ipv4').ipAddress();
-$('#ipv6').ipAddress({v:6});
-})
-</script>-->
-<script type="text/javascript">
-function crearCookie(clave, valor, diasexpiracion) {
-    var d = new Date();
-    d.setTime(d.getTime() + (diasexpiracion*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = snorby@snorby.com + "=" + dscorp2000 + "; " + *24*60*60*1000;
-}
-</script>
 
-<script type="text/javascript">
-<!--
-/*
- * Función para validar una dirección ip
- * el identificador del formulario
- */
 function validateIp(idForm)
 {
-    //Creamos un objeto 
+    
     object=document.getElementById(idForm);
     valueForm=object.value;
  
     // Patron para la ip
     var patronIp=new RegExp("^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$");
-    //window.alert(valueForm.search(patronIp));
-    // Si la ip consta de 4 pares de números de máximo 3 dígitos
+    
     if(valueForm.search(patronIp)==0)
     {
-        // Validamos si los números no son superiores al valor 255
+        
         valores=valueForm.split(".");
         if(valores[0]<=255 && valores[1]<=255 && valores[2]<=255 && valores[3]<=255)
         {
@@ -300,10 +277,12 @@ function validateIp(idForm)
     }
     //Ip incorrecta
     object.style.color="#f00";
+    
 }
 //copiar codigo
 function validateMAC(idForm)
 {
+    
     //Creamos un objeto 
     object=document.getElementById(idForm);
     valueForm=object.value;
@@ -325,6 +304,7 @@ function validateMAC(idForm)
     }
     //Ip incorrecta
     object.style.color="#f00";
+    
 }
 //-->
 </script> //copiar codigo
