@@ -1,0 +1,2 @@
+alert tcp any any -> any any (content:"files-upload.com"; msg:"Descargas de Files-upload"; classtype:policy-violation; sid:100000049; rev:2;)
+
