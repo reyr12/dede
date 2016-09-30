@@ -261,22 +261,7 @@ class SuricataController extends Controller
            'rulea'=>trim($rule), 
         ));
     }
-    /**
-     * @Route("/ruleDelete", name="rule_delete")
-     */
-    public function ruleDeleteAction()
-    {
-        $rule=$this->get('request')->request->get('rule', '');
-        $file=$this->get('request')->request->get('file', '');  
- //echo base64_decode($rule);
-        return $this->render('AppBundle:suricata:delete.html.twig', array(
-           'file'=>$file,
-           'rule'=>trim( base64_decode(urldecode($rule))), 
-           'rulea'=>trim($rule), 
-        ));
-    }
-
-     /**
+        /**
      * @Route("/ruleUpdate", name="rule_update")
      */
     public function ruleUpdateAction()
@@ -298,6 +283,57 @@ class SuricataController extends Controller
                    // echo '|'.$key.'|'.$rulea.'|';
                     $nuevas[]=$rule;
                     $x++;
+                }else{
+                    $nuevas[]=$key;
+                }
+                
+            }
+            if($x>0){
+                $b = array_values($nuevas);
+                $otro = implode("\n",$b); 
+                $file = fopen($archivo, "w+");
+                fwrite($file, $otro . PHP_EOL);
+                fclose($file);
+            }
+        return $this->redirect($this->generateUrl('suricata-homepage'));
+    }
+     /**
+     * @Route("/ruleDelete", name="rule_delete")
+     */
+    public function ruleDeleteAction()
+    {
+        $rule=$this->get('request')->request->get('rule', '');
+        $file=$this->get('request')->request->get('file', '');  
+ //echo base64_decode($rule);
+        return $this->render('AppBundle:suricata:delete.html.twig', array(
+           'file'=>$file,
+           'rule'=>trim( base64_decode(urldecode($rule))), 
+           'rulea'=>trim($rule), 
+        ));
+    }
+     /**
+     * @Route("/ruleRemove", name="rule_remove")
+     */
+    public function ruleRemoveAction()
+    {
+        $rule=$this->get('request')->request->get('rule', '');
+        $rulea=$this->get('request')->request->get('rulea', '');
+        $file=$this->get('request')->request->get('file', ''); 
+        $rulea =trim(base64_decode(urldecode($rulea)));
+
+        $archivo = '/etc/nsm/rules/'.$file;
+            $abrir = fopen($archivo,'r+');
+            $contenido = fread($abrir,filesize($archivo));
+            fclose($abrir);        
+            $contenido = explode("\n",$contenido);
+            $i=$x=0;
+            $nuevas=array();
+            foreach ($contenido as $key ) {
+                if($key==$rulea){
+                   // echo '|'.$key.'|'.$rulea.'|';
+                    $nuevas[]="";
+                    $x++;
+                    $nuevas = chop("");
                 }else{
                     $nuevas[]=$key;
                 }
